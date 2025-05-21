@@ -1,0 +1,6 @@
+streamlit
+dotenv
+os
+openai==0.28
+pandas
+plotly
