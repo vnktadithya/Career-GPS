@@ -8,7 +8,7 @@ def progress_dashboard():
         st.warning("Please login first.")
         st.stop()
 
-    col1, col2, col3 = st.columns([1, 10, 1])  # Adjust the proportions to align the button to the right
+    col1, col2, col3 = st.columns([1, 10, 1])
 
     with col3:
         if st.button("Logout"):
@@ -106,7 +106,7 @@ def progress_dashboard():
 
     df = pd.DataFrame(data, columns=["Week", "Goal", "Completed", "Suggestions"])
 
-    # ✅ Update Progress
+    # Update Progress
     st.subheader("✅ Update Your Progress")
     grouped = df.groupby("Week")
     for week, group in grouped:
@@ -117,10 +117,10 @@ def progress_dashboard():
             if checked != row["Completed"]:
                 store_progress(username, row["Week"], row["Goal"], checked)
                 st.rerun()
-    # 🎯 Weekly Completion Stats
+    # Weekly Completion Stats
     df["Completed (%)"] = df.groupby("Week")["Completed"].transform(lambda x: 100 * x.sum() / len(x))
 
-    # 📊 Bar Chart
+    # Bar Chart
     st.subheader("📊 Weekly Progress Overview")
 
     custom_blues = [(0.0, "#add8e6"),  # light blue
@@ -132,7 +132,7 @@ def progress_dashboard():
                        color_continuous_scale=custom_blues, title="Weekly Progress")
     st.plotly_chart(bar_chart, use_container_width=True)
 
-    # 🥧 Pie Chart
+    # Pie Chart
     st.subheader("🥧 Overall Completion Ratio")
     completed = df["Completed"].sum()
     incomplete = len(df) - completed
@@ -140,7 +140,7 @@ def progress_dashboard():
     pie_chart = px.pie(pie_data, names="Status", values="Count", title="Overall Progress")
     st.plotly_chart(pie_chart, use_container_width=True)
 
-    # 💡 Suggestions
+    # Suggestions
     st.subheader("🎯 Weekly Feedback")
     for week, group in grouped:
         st.markdown(f"### Week {int(week)}")

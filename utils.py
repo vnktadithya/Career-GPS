@@ -1,11 +1,10 @@
 import streamlit as st
 from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-#from langchain_community.tools import DuckDuckGoSearchRun  # Or Serper.dev Tool
 import os
 from dotenv import load_dotenv
 import json
-import requests  # Import the requests library
+import requests  
 
 load_dotenv()
 openai_api_key = os.getenv("OPENROUTER_API_KEY")
@@ -103,7 +102,7 @@ def extract_topics(user_goal):
 
     headers = {
         "Authorization": f"Bearer {openai_api_key}",
-        "HTTP-Referer": "http://localhost",  # Replace with your deployed URL
+        "HTTP-Referer": "http://localhost",  
         "Content-Type": "application/json"
     }
 
@@ -118,7 +117,7 @@ def extract_topics(user_goal):
     response = requests.post(f"{openai_api_base}/chat/completions", headers=headers, json=payload)
 
     if response.status_code != 200:
-        return [user_goal]  # fallback
+        return [user_goal]  
     result = response.json()["choices"][0]["message"]["content"]
 
     try:
@@ -133,7 +132,7 @@ def extract_topics(user_goal):
 
 def logout_button():
     with st.container():
-        col1, col2 = st.columns([9, 1])  # 9:1 ratio places button on right
+        col1, col2 = st.columns([9, 1])  
         with col2:
             if st.button("Logout"):
                 st.session_state.logged_in = False

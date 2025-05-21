@@ -1,20 +1,18 @@
 import streamlit as st
 from utils import generate_roadmap
 
-
-# --- Streamlit UI Starts Here ---
 if not st.session_state.get('logged_in'):
         st.warning("Please login first.")
         st.stop()
 
 st.set_page_config(page_title="Career GPS", layout="wide")
 
-# Top row with "Track My Progress" and "Logout" buttons
+
 spacer_col, button_col1, button_col2 = st.columns([0.8, 0.1, 0.1]) 
 
 with button_col1:
     if st.button("Track My Progress", use_container_width=True, key="track_progress_button"):
-        st.switch_page("pages/Progress_tracker.py") # Make sure this path is correct
+        st.switch_page("pages/Progress_tracker.py")
 
 with button_col2:
     if st.button("Logout", use_container_width=True, key="logout_button"):
@@ -52,5 +50,4 @@ if st.button("🚀 Generate My Roadmap"):
     else:
         st.warning("Please provide both your background and a career goal.")
 
-# Footer
 st.markdown("---")

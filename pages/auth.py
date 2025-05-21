@@ -1,13 +1,13 @@
 import streamlit as st
 from db import create_user_table, register_user, login_user
 
-# ✅ Initialize session state
+# Initialize session state
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 if 'username' not in st.session_state:
     st.session_state['username'] = None
 
-# ✅ Redirect if already logged in
+# Redirect if already logged in
 if st.session_state['logged_in']:
     st.switch_page("pages/home.py")
 

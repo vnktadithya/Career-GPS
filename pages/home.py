@@ -5,8 +5,7 @@ def home():
         st.warning("Please login first.")
         st.stop()
 
-    # Create a row for the buttons and place them on the top-right
-    col1, col2, col3 = st.columns([1, 10, 1])  # Adjust the proportions to align the button to the right
+    col1, col2, col3 = st.columns([1, 10, 1])
 
     with col3:
         if st.button("Logout"):
