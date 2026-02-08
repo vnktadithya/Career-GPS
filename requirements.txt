@@ -1,0 +1,11 @@
+streamlit
+json
+dotenv
+os
+openai==0.28
+pandas
+plotly
+langchain
+langchain_community
+requests
+sqlite3
